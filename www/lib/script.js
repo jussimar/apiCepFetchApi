@@ -19,6 +19,14 @@ window.onload = function(){
     }
 }
 
+function retorno(buttonIndex) {
+  if(buttonIndex == 1){
+    navigator.app.exitApp();
+  }else{
+    return false;
+  }
+}
+
 //checkConnection();
 
   const opcoes = {
@@ -39,7 +47,13 @@ window.onload = function(){
         })
       })
     }else{
-      alert("Não tem conexão filho!!")
+
+      navigator.notification.confirm(
+          'Você não tem Conexão! Tente mais tarde - Deseja sair?',
+          retorno,   
+          'Erro de Conexão',  
+          ['SIM','NÃO'] 
+      );
     }
     
   });
@@ -76,7 +90,12 @@ window.onload = function(){
           }
           );
   }else{
-     alert("Não tem conexão filho!!");
+     navigator.notification.confirm(
+          'Você não tem Conexão! Tente mais tarde - Deseja sair?',
+          retorno,   
+          'Erro de Conexão',  
+          ['SIM','NÃO'] 
+      );
   }
       
 
